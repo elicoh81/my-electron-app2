@@ -1,12 +1,13 @@
-const { app, BrowserWindow } = require('electron');
+import { app, BrowserWindow } from 'electron';
+import * as path from 'path';
 
-const path = require('path')
 const env = process.env.NODE_ENV || 'development';
 
 // If development environment
 if (env === 'development') {
+    console.log("Running Electron from ", path.join(__dirname, 'node_modules', '.bin', 'electron'))
     require('electron-reload')(__dirname, {
-        electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+        electron: path.join(__dirname, '..', '..', 'node_modules', '.bin', 'electron'),
         hardResetMethod: 'exit'
     });
 }
